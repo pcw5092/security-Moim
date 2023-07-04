@@ -1,6 +1,5 @@
 package org.edupoll.security.support;
 
-import org.edupoll.model.entity.User;
 import org.edupoll.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
