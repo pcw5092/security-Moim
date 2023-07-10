@@ -12,10 +12,9 @@ spring :
   jackson :
     default-property-inclusion : NON_NULL
   datasource :
-    url : jdbc:oracle:thin:@3.34.136.30:1521:xe
-    username : moim
-    password : 1q2w3e4r
-    driver-class-name : oracle.jdbc.driver.OracleDriver
+    url : jdbc:mysql://pcw5092.cydd1pxflifs.ap-northeast-2.rds.amazonaws.com:3306/app_moim
+    username : admin
+    password : gkdlxhs!32
   mvc :
     format :
       date : yyyy-MM-dd
@@ -28,11 +27,11 @@ server :
     encoding :
       force : true
     
-    
-    
-    
 config :
   moim :
     pageSize : 6    
-    
+
+# Server Port
+server :
+  port : 8070
    
