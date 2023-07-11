@@ -23,6 +23,7 @@ spring :
    
           
 server :
+  port : 8070
   servlet :
     encoding :
       force : true
@@ -31,7 +32,4 @@ config :
   moim :
     pageSize : 6    
 
-# Server Port
-server :
-  port : 8070
    

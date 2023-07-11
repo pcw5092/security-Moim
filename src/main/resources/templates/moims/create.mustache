@@ -34,20 +34,26 @@
 	</div>
 	<div class="mb-2">
 		<label class="text mb-1">모임 최대 인원</label> 
-		<input type="number" name="maxPerson"
-			class="form-control">
+					<select id="person" name="maxPerson" 
+					style="padding: 6px 12px; border: 1px solid #ccc; border-radius: 4px; ">
+						{{#persons}}
+							<option value="{{.}}">{{.}}명</option>
+						{{/persons}}
+					</select>
 		<div class="form-text">
 			모임의 최대 참여 가능 인원을 입력해주세요. <span class="text-warning">(※필요하지 않다면
 				비워주세요.)</span>
 		</div>
 	</div>
 	<div class="mb-4">
-		<label class="text mb-1">모임 날짜 및 소요시간</label>
+		<label class="text mb-1">모임 날짜</label>
 		<div class="row g-2">
 			<div class="col-md">
 				<input type="date" 
 				class="form-control" name="targetDate">
 			</div>
+			
+			<label class="text mb-1">소요시간</label>
 			<div class="col-md">
 				<input type="number" class="form-control" 
 					name="duration">

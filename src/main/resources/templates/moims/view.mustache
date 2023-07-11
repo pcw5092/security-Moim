@@ -21,23 +21,30 @@
 			{{title}} <small class="fs-6 text-secondary">{{cate}}</small>
 		</h1>
 		<p class="fs-4">{{description }}</p>
-		<p class="text-end text-black-80 fs-smaller">모임 예정일 : {{targetDate
-			}} ({{duration}}h)</p>
+		<p class="text-end text-black-80 fs-smaller">모임 예정일 : {{targetDate}} ({{duration}}h)</p>
 	</div>
-	{{#isJoined }}
-	<button id="join-bt" class="btn btn-danger btn-sm" data-status="joined">참가취소하기</button>
-	{{/isJoined }}
-	{{^isJoined }}
-	<button id="join-bt" class="btn btn-primary btn-sm" data-status="not-joined" >참가신청하기</button>
-	{{/isJoined }}
+	
+
+		{{#isJoined}}
+			<button id="join-bt" class="btn btn-danger btn-sm" data-status="joined">참가취소하기</button>
+		{{/isJoined}}
+    	{{^isJoined}}
+       			<button id="join-bt" class="btn btn-primary btn-sm " data-status="not-joined">참가신청하기</button>
+    	{{/isJoined}}
+	
 </div>
 {{/moim }}
+
 <!-- 참가자 목록 뷰 -->
 <div class="mb-2 text-end" id="attends">
-	{{#moim.attendances }} <span class="badge bg-secondary fs-6 me-1 mb-1"><i
-		class="bi bi-person-circle me-1 "></i> {{user.id }}</span>
+{{#moim.manager.id}}
+	<span class="badge bg-secondary fs-6 me-1 mb-1"><i class="bi bi-person-circle me-1 "></i> {{.}}</span>
+	{{#moim.attendances }} 
+		<span class="badge bg-secondary fs-6 me-1 mb-1"><i class="bi bi-person-circle me-1 "></i> {{user.id }}</span>
 	{{/moim.attendances }}
+{{/moim.manager.id}}	
 </div>
+
 <!-- 리플 등록용 Form -->
 <div class="mb-3 border-bottom pb-2">
 	<form action="/moims/reply" method="post">
@@ -79,12 +86,15 @@
 		{{/moim.replys }}
 	</tbody>
 </table>
+
 <ul class="pagination pagination-sm justify-content-end">
 	{{#replys}}
 		<li class="page-item"><a class="page-link"href="/moims/view?id={{moim.id}}&p={{.}}">{{.}}</a></li>
 	{{/replys}}
 </ul>
-<script>
+
+<script>	
+	
 	document.querySelector("#join-bt").onclick = (evt) => {
 		//console.log(document.querySelector("#join-bt").dataset.status);
 		const status = document.querySelector("#join-bt").dataset.status;
@@ -155,7 +165,8 @@
 			document.querySelector("#join-bt").classList.add("btn-primary");
 		}else {
 			window.alert(obj.errorMessage);
-		}
+		}	
+		
 	}
 	
 	

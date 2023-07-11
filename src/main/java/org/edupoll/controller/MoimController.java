@@ -41,12 +41,18 @@ public class MoimController {
 	}
 	
 
+	// 모임 만들기 view
 	@GetMapping("/moims/create")
-	public String showMoimCreateForm() {
+	public String showMoimCreateForm(Model model) {
 
+		String[] persons = new String[] {"2","3","4","5","6","7","8","9","10","11","12"};
+		
+		model.addAttribute("persons", persons);
+		
 		return "moims/create";
 	}
 
+	// 모임 만들기 처리
 	@PostMapping("/moims/create")
 	public String moimCreateHandle(Moim moim, @AuthenticationPrincipal Account account) {
 		String createdId = moimService.createNewMoim(moim, account.getUsername());
@@ -73,7 +79,7 @@ public class MoimController {
 		
 		if(account != null)
 			model.addAttribute("isJoined", attendanceService.isExistsAttendance(account.getUsername(), id) );
-		 
+		
 			
 		return "moims/view";
 	}
